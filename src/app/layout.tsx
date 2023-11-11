@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import './globals.css'
 import Navbar from "@/components/navbar";
 import {fontSans} from "@/app/fonts";
+import {Providers} from "@/app/providers";
 import SearchBar from "@/components/SearchBar";
 
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fontSans.className}>
-        <Navbar/>
-        <SearchBar/>
-        {children}
+      <body className={`${fontSans.className} m-0`}>
+        <Providers>
+          <Navbar/>
+          <SearchBar/>
+          {children}
+        </Providers>
       </body>
     </html>
   )
