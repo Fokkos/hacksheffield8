@@ -9,7 +9,7 @@ import AdminHackFoundModal from "@/components/AdminHackFoundModal";
 export default function AdminDash(): React.ReactNode {
 
   function playSound() {
-    var audio = new Audio("/tada.mp3");
+    var audio = new Audio("/vineboom.mp3");
     audio.play();
   }
 
@@ -36,12 +36,10 @@ export default function AdminDash(): React.ReactNode {
 
   const deleteUser = (user_id: number) => {
     let table = document.getElementById('users-table')
-    // @ts-ignore
     for (let i=0; i<table.lastElementChild.childNodes.length; i++) {
-      //@ts-ignore
       if (table.lastElementChild.childNodes[i].firstElementChild.innerText === user_id.toString()) {
-        //@ts-ignore
         table.deleteRow(i+1);
+        playSound();
         break;
       }
     }
