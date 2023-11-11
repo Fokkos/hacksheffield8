@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import './globals.css'
 import Navbar from "@/components/navbar";
 import {fontSans} from "@/app/fonts";
+import {Providers} from "@/app/providers";
 
 
 export const metadata: Metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fontSans.className}>
-        <Navbar/>
-        {children}
+      <body className={`${fontSans.className} m-0`}>
+        <Providers>
+          <Navbar/>
+          {children}
+        </Providers>
       </body>
     </html>
   )
