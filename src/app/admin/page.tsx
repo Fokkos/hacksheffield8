@@ -7,6 +7,17 @@ import SignIn from "@/components/SignIn";
 import AdminHackFoundModal from "@/components/AdminHackFoundModal";
 
 export default function AdminDash(): React.ReactNode {
+
+  function playSound() {
+    var audio = new Audio("/tada.mp3");
+    audio.play();
+  }
+
+  function handleButtonClick() {
+    setIsExploding(!isExploding)
+    playSound()
+  }
+
   const [isExploding, setIsExploding] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
   const mouseLocation = useMousePosition();
@@ -23,10 +34,13 @@ export default function AdminDash(): React.ReactNode {
     }
   };
 
-  const deleteUser = (user_id) => {
+  const deleteUser = (user_id: number) => {
     let table = document.getElementById('users-table')
+    // @ts-ignore
     for (let i=0; i<table.lastElementChild.childNodes.length; i++) {
+      //@ts-ignore
       if (table.lastElementChild.childNodes[i].firstElementChild.innerText === user_id.toString()) {
+        //@ts-ignore
         table.deleteRow(i+1);
         break;
       }

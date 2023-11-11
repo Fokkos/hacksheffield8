@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from "@/components/navbar";
 import {fontSans} from "@/app/fonts";
 import {Providers} from "@/app/providers";
+import SearchBar from "@/components/SearchBar";
 
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={`${fontSans.className} m-0`}>
         <Providers>
           <Navbar/>
+          <SearchBar/>
           {children}
         </Providers>
       </body>
