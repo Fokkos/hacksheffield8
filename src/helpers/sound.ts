@@ -1,4 +1,4 @@
-export const vineBoom: HTMLAudioElement = new Audio("/audio/vineboom.mp3");
+export const vineBoom: () => HTMLAudioElement = () => new Audio("/audio/vineboom.mp3");
 
 const yaySounds = [
   new Audio('/audio/tada.mp3'),

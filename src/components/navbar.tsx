@@ -1,9 +1,15 @@
+'use client'
 import React from "react";
-import {Box, TextField} from "@mui/material";
-import SearchBar from "@/components/SearchBar";
 import Image from "next/image";
+import {getCookie, hasCookie} from "cookies-next";
 
 export default function Navbar(): React.ReactNode {
+  const [score, setScore] = React.useState(parseInt(localStorage.getItem('score') || "0"));
+
+  window.addEventListener('scoreUpdate', () => {
+    setScore(parseInt(getCookie('score')?.toString() as string))
+  })
+
   return (
     <nav className={`bg-gray-800`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -20,9 +26,9 @@ export default function Navbar(): React.ReactNode {
             </div>
           </div>
           <div>
-            <div className="flex flex-shrink-0 items-center text-white font-bold text-lg">
-              Score: 12
-            </div>
+            <span className="text-white font-bold text-lg">
+              Score: {score}
+            </span>
           </div>
         </div>
       </div>

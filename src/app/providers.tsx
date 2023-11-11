@@ -4,8 +4,8 @@
 
 import React from "react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {useTheme} from "@mui/material";
 
+const ScoreContext: React.Context<number> = React.createContext(0);
 export function Providers({
                             children,
                           }: {

@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import {fontSans} from "@/app/fonts";
 import {Providers} from "@/app/providers";
 import SearchBar from "@/components/SearchBar";
+import {getCookie, setCookie} from "cookies-next";
 
 
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-                                     children,
-                                   }: {
+ children,
+}: {
   children: React.ReactNode
 }) {
   return (

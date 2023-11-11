@@ -6,6 +6,8 @@ import useMousePosition from "@/helpers/mouseposition";
 import SignIn from "@/components/SignIn";
 import AdminHackFoundModal from "@/components/AdminHackFoundModal";
 import {playSound, randomYay, vineBoom} from "@/helpers/sound";
+import {getCookie, hasCookie, setCookie} from "cookies-next";
+import {findHack} from "@/helpers/score";
 
 export default function AdminDash(): React.ReactNode {
 
@@ -19,6 +21,9 @@ export default function AdminDash(): React.ReactNode {
 
     if (data.get('username') === 'admin' && data.get('password') === 'admin') {
       setIsAdmin(true);
+
+      findHack('adminlogin')
+
       setTimeout(() => {
         setIsExploding(true);
         playSound(randomYay());
@@ -28,10 +33,10 @@ export default function AdminDash(): React.ReactNode {
 
   const deleteUser = (user_id: number) => {
     let table = document.getElementById('users-table')
-    for (let i=0; i<table.lastElementChild.childNodes.length; i++) {
+    for (let i = 0; i < table.lastElementChild.childNodes.length; i++) {
       if (table.lastElementChild.childNodes[i].firstElementChild.innerText === user_id.toString()) {
-        table.deleteRow(i+1);
-        playSound(vineBoom);
+        table.deleteRow(i + 1);
+        playSound(vineBoom());
         break;
       }
     }

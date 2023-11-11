@@ -110,7 +110,7 @@ export default function Home() {
           </p>
         </a>
       </div>
-      <IntroModal id={"myModal"}/>
+      <IntroModal />
     </main>
   )
 }
