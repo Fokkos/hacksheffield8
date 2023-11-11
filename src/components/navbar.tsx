@@ -2,9 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import {getCookie, hasCookie} from "cookies-next";
+import {resetScore} from "@/helpers/score";
 
 export default function Navbar(): React.ReactNode {
-  const [score, setScore] = React.useState(parseInt(localStorage.getItem('score') || "0"));
+  const [score, setScore] = React.useState(parseInt(getCookie('score')?.toString() || "0"));
 
   window.addEventListener('scoreUpdate', () => {
     setScore(parseInt(getCookie('score')?.toString() as string))
@@ -25,10 +26,13 @@ export default function Navbar(): React.ReactNode {
               <h1 className={"font-bold text-white"}>VERY SECURE WEBSITE</h1>
             </div>
           </div>
-          <div>
-            <span className="text-white font-bold text-lg">
+          <div className={'flex flex-col text-white font-bold'}>
+            <span className="text-lg">
               Score: {score}
             </span>
+            <a className={'underline cursor-pointer'} onClick={resetScore}>
+              Reset Score
+            </a>
           </div>
         </div>
       </div>

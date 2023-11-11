@@ -9,3 +9,9 @@ export const findHack = (hackName: string) => {
     setCookie('hacksFound', hacksFound + hackName + '-')
   }
 }
+
+export const resetScore = () => {
+  setCookie('score', '0');
+  window.dispatchEvent(new Event('scoreUpdate'));
+  setCookie('hacksFound', '');
+}

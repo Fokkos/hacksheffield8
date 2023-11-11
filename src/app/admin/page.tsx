@@ -1,19 +1,18 @@
 "use client"
 
-import React, {useRef} from "react";
+import React from "react";
 import Confetti from "react-dom-confetti";
 import useMousePosition from "@/helpers/mouseposition";
 import SignIn from "@/components/SignIn";
 import AdminHackFoundModal from "@/components/AdminHackFoundModal";
 import {playSound, randomYay, vineBoom} from "@/helpers/sound";
-import {getCookie, hasCookie, setCookie} from "cookies-next";
 import {findHack} from "@/helpers/score";
 
 export default function AdminDash(): React.ReactNode {
 
   const [isExploding, setIsExploding] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
-  const mouseLocation = useMousePosition();
+  const tableRef: React.MutableRefObject<HTMLTableElement | null> = React.useRef<HTMLTableElement>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,10 +31,12 @@ export default function AdminDash(): React.ReactNode {
   };
 
   const deleteUser = (user_id: number) => {
-    let table = document.getElementById('users-table')
-    for (let i = 0; i < table.lastElementChild.childNodes.length; i++) {
-      if (table.lastElementChild.childNodes[i].firstElementChild.innerText === user_id.toString()) {
-        table.deleteRow(i + 1);
+    if (tableRef.current === null) {
+      return
+    }
+    for (let i = 0; i < tableRef.current.lastElementChild!.childNodes.length; i++) {
+      if (tableRef.current.lastElementChild!.children[i].firstElementChild!.innerHTML === user_id.toString()) {
+        tableRef.current.deleteRow(i + 1);
         playSound(vineBoom());
         break;
       }
@@ -59,7 +60,7 @@ export default function AdminDash(): React.ReactNode {
           </AdminHackFoundModal>
           <div className={`comic-sans w-full h-full ms-6`}>
             <h1 className={`text-6xl`}>Admin Dashboard</h1>
-            <table id={'users-table'} className={'border-collapse text-left admin-dash'}>
+            <table id={'users-table'} className={'border-collapse text-left admin-dash'} ref={tableRef}>
               <thead>
                 <tr>
                   <th>User ID</th>

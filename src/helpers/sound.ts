@@ -1,3 +1,5 @@
+'use client'
+
 export const vineBoom: () => HTMLAudioElement = () => new Audio("/audio/vineboom.mp3");
 
 const yaySounds = [
