@@ -5,18 +5,9 @@ import Confetti from "react-dom-confetti";
 import useMousePosition from "@/helpers/mouseposition";
 import SignIn from "@/components/SignIn";
 import AdminHackFoundModal from "@/components/AdminHackFoundModal";
+import {playSound, randomYay, vineBoom} from "@/helpers/sound";
 
 export default function AdminDash(): React.ReactNode {
-
-  function playSound() {
-    var audio = new Audio("/vineboom.mp3");
-    audio.play();
-  }
-
-  function handleButtonClick() {
-    setIsExploding(!isExploding)
-    playSound()
-  }
 
   const [isExploding, setIsExploding] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
@@ -28,8 +19,9 @@ export default function AdminDash(): React.ReactNode {
 
     if (data.get('username') === 'admin' && data.get('password') === 'admin') {
       setIsAdmin(true);
-      setInterval(() => {
+      setTimeout(() => {
         setIsExploding(true);
+        playSound(randomYay());
       }, 500)
     }
   };
@@ -39,7 +31,7 @@ export default function AdminDash(): React.ReactNode {
     for (let i=0; i<table.lastElementChild.childNodes.length; i++) {
       if (table.lastElementChild.childNodes[i].firstElementChild.innerText === user_id.toString()) {
         table.deleteRow(i+1);
-        playSound();
+        playSound(vineBoom);
         break;
       }
     }
