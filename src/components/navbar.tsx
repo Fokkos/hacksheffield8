@@ -14,9 +14,9 @@ export default function Navbar(): React.ReactNode {
   return (
     <nav className={`bg-gray-800`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-min items-center justify-between">
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex flex-shrink-0 items-center gap-4">
+        <div className="relative flex flex-col md:flex-row h-min items-start md:items-center justify-between gap-6 md:gap-16 lg:gap-24">
+          <div className="flex items-center justify-center">
+            <div className="flex items-center gap-4">
               <Image
                 src={'/images/greens.png'}
                 alt={'CompSoc Greens Logo'}
@@ -26,27 +26,19 @@ export default function Navbar(): React.ReactNode {
               <h1 className={"font-bold text-white"}>VERY SECURE WEBSITE</h1>
             </div>
           </div>
-          <div className={'flex flex-col text-white font-bold'}>
-            <span className="text-lg">
-              Score: {score}
-            </span>
-            <a className={'underline cursor-pointer'} onClick={resetScore}>
-              Reset Score
-            </a>
+          <div className={'flex flex-row flex-grow self-stretch mb-6 md:m-0 items-center justify-between'}>
+            <div>
+              <a href={'/feedback-form'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Survey Form</a>
+            </div>
+            <div className={'flex flex-col text-white font-bold'}>
+              <span className="text-lg">
+                Score: {score}
+              </span>
+              <a className={'underline cursor-pointer hover:text-gray-300'} onClick={resetScore}>
+                Reset Score
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="sm:hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-             aria-current="page">Dashboard</a>
-          <a href="#"
-             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-          <a href="#"
-             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-          <a href="#"
-             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
         </div>
       </div>
     </nav>

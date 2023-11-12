@@ -20,7 +20,10 @@ export default function AdminDash(): React.ReactNode {
 
     if (data.get('username')?.toString().toLowerCase() === 'admin' && data.get('password')?.toString().toLowerCase() === 'admin') {
       setIsAdmin(true);
-
+      setTimeout(() => {
+        setIsExploding(true);
+        playSound(randomYay());
+      }, 500)
       findHack('adminlogin')
 
     }
