@@ -34,7 +34,7 @@ export default function SearchPage(): React.ReactNode {
               What you&apos;ve just done is an example of an <strong>SQL Injection Attack</strong>. When creating a website that has user input fields linked to a database, make sure to use prepared statements and/or sanitise ALL inputs. (The <a href={'https://portswigger.net/web-security/sql-injection/cheat-sheet'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>PortSwigger Cheat Sheet</a> has many great examples!)
             </p>
           </HackFoundModal>
-          <p>INVALID</p>
+          <p>no results found for: {query}</p>
         </>
       )}
     </main>
