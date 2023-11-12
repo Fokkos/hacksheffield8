@@ -41,8 +41,8 @@ export default function AdminDash(): React.ReactNode {
         <>
           <HackFoundModal title={'Weak Password Found!'}>
             <p className="text-gray-800">
-              Oops - turns out we are not authenticating users after a POST request is made!<br className={'mb-2'} />
-              This is a great example of <strong>missing access controls</strong>. One thing you can do to avoid this issue is to follow the principle of &lsquo;Deny by Default&rsquo; (make all user roles unable to access anything unless you explicitly allow them to). The <a href={'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>Authorisation Cheatsheet by OWASP</a> is a great source of information on preventing this vulnerability.
+              Okay, that one&apos;s on us - we made it too easy. +1 to your score I suppose...<br className={'mb-2'} />
+              That was a classic (albeit exaggerated - hopefully) example of <strong>poor authentication</strong>. When creating a website that has a &lsquo;superuser&rsquo; type role, make sure that your superuser&apos;s login is hard to crack. And <strong>definitely</strong> make sure that regular users can&apos;t view pages that aren&apos;t meant for them - use good access control! For any user&apos;s that may sign up to your site, ensure you are enforcing suitable password requirements. (The <a href={'https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>OWASP Authentication Cheatsheet</a> is a good resource for this)
             </p>
           </HackFoundModal>
           <div className={`comic-sans w-full h-full ms-6`}>

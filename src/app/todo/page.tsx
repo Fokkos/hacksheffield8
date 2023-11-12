@@ -17,7 +17,8 @@ export default function TodoList(): React.ReactNode {
       <HackFoundModal title={"Bonus vulnerability found!"}>
         <p className="text-gray-800">
           This doesn&apos;t count towards your score - but it might help you find any missing vulnerabilities!<br className={'mb-2'} />
-          Looks like this developer knew all about the vulnerabilities within their website, but had other priorities when they were working on the site. Don&apos;t do this - if you find a security vulnerability in any program that you are creating, fixing that should be your top priority.
+          Looks like this developer knew all about the vulnerabilities within their website, but had other priorities when they were working on the site. Don&apos;t do this - if you find a security vulnerability in any program that you are creating, fixing that should be your top priority.<br className={'mb-2'} /><br className={'mb-2'} />
+          Also... Writing your to-do list as a page on a live website? Really?
         </p>
       </HackFoundModal>
     </main>

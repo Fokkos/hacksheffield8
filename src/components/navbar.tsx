@@ -17,7 +17,7 @@ export default function Navbar(): React.ReactNode {
   return (
     <nav className={`bg-gray-800`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex flex-col md:flex-row h-min items-start md:items-center justify-between gap-6 md:gap-16 lg:gap-24">
+        <div className="relative flex flex-col md:flex-row h-min items-start md:items-center justify-between gap-6 lg:gap-24">
           <div className="flex items-center justify-center">
             <div className="flex items-center gap-4">
               <a href={'/'}>
@@ -32,8 +32,10 @@ export default function Navbar(): React.ReactNode {
             </div>
           </div>
           <div className={'flex flex-row gap-8 self-stretch py-5 mb-6 md:m-0 items-center justify-between'}>
-            <div>
-              <a href={'/feedback-form'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Survey Form</a>
+            <div className={'flex gap-4'}>
+              <a href={'/feedback-form'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>POSTing Forms</a>
+              <a href={'/cryptography'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Cryptography</a>
+              <a href={'/admin'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Not the Admin Dashboard</a>
             </div>
             <div className={'w-[2px] bg-white self-stretch border-y-[16px] border-y-gray-800'} />
             <div className={'flex flex-col text-white font-bold'}>

@@ -6,9 +6,11 @@ import Confetti from "react-dom-confetti";
 
 export default function HackFoundModal({
   title,
+  changeState,
   children
 }:{
   title: string;
+  changeState?: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactElement
 }) {
   let [isOpen, setIsOpen] = useState(true)
@@ -22,7 +24,10 @@ export default function HackFoundModal({
   })
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
+    if (changeState) {
+      changeState(false);
+    }
   }
 
   return (
