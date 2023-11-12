@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import {playSound, randomYay} from "@/helpers/sound";
 import {findHack} from "@/helpers/score";
 import TextField from "@mui/material/TextField";
 import {Card, CardActions, CardContent} from "@mui/material";
