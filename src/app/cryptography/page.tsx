@@ -25,7 +25,7 @@ export default function Cryptography(): React.ReactNode {
         <CardContent className={'flex flex-col items-center gap-6'}>
           <h1>Hello!</h1>
           <p className={'text-center'}>We made a password hashing algorithm, and we&apos;re quite proud of it. Look, below is a hashed version of my password - I bet you can&apos;t crack it!</p>
-          <Card variant={'outlined'} className={'w-max'}>
+          <Card variant={'outlined'} className={'max-w-full text-center'}>
             <p className={`${fontMono.className} px-4`}>uijtjtnzwfszmpohqbttxpse-jipqfopcpezhvfttftju</p>
           </Card>
           <TextField label={"Your Guess"} className={'w-3/4'} ref={textRef}/>
