@@ -13,7 +13,7 @@ export default function Cryptography(): React.ReactNode {
   const [cracked, setCracked] = React.useState(false);
   
   const checkPassword = () => {
-    if (textRef.current!.lastElementChild!.firstElementChild!.value === 'thisismyverylongpassword-ihopenobodyguessesit') {
+    if ((textRef.current!.lastElementChild!.firstElementChild! as HTMLInputElement).value === 'thisismyverylongpassword-ihopenobodyguessesit') {
       setCracked(true)
       findHack('cryptography');
     }
