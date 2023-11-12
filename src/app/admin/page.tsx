@@ -2,7 +2,7 @@
 
 import React from "react";
 import SignIn from "@/components/SignIn";
-import {playSound, randomYay, vineBoom} from "@/helpers/sound";
+import {playSound} from "@/helpers/sound";
 import {findHack} from "@/helpers/score";
 import HackFoundModal from "@/components/HackFoundModal";
 
@@ -33,6 +33,8 @@ export default function AdminDash(): React.ReactNode {
       }
     }
   }
+
+  const vineBoom: () => HTMLAudioElement = () => new Audio("/audio/vineboom.mp3");
 
   return (
     <main className={`w-full h-full pb-8 ${isAdmin && 'flex items-center justify-center'}`}>

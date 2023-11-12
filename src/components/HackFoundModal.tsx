@@ -1,7 +1,7 @@
 'use client'
 import { Dialog, Transition } from '@headlessui/react'
 import React, {Fragment, useEffect, useState} from 'react'
-import {playSound, randomYay} from "@/helpers/sound";
+import {playSound} from "@/helpers/sound";
 import Confetti from "react-dom-confetti";
 
 export default function HackFoundModal({
@@ -15,6 +15,19 @@ export default function HackFoundModal({
 }) {
   let [isOpen, setIsOpen] = useState(true)
   const [isExploding, setIsExploding] = React.useState(false);
+
+  const yaySounds = [
+    new Audio('/audio/tada.mp3'),
+    new Audio('/audio/yippee.mp3'),
+    new Audio('/audio/child_yay.mp3'),
+    new Audio('/audio/holy_moly.mp3'),
+    new Audio('/audio/tacobell.mp3'),
+    new Audio('/audio/doot.mp3'),
+  ]
+
+  function randomYay() {
+    return yaySounds[Math.floor(Math.random()*yaySounds.length)]
+  }
 
   useEffect(() => {
     setTimeout(() => {
