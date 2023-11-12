@@ -2,7 +2,7 @@
  * Helper constants for fonts
  */
 
-import { Open_Sans, DM_Serif_Display, Courier_Prime } from "next/font/google";
+import {DM_Serif_Display, Courier_Prime, Roboto} from "next/font/google";
 import { NextFont } from "next/dist/compiled/@next/font";
 
 export const fontSerif: NextFont = DM_Serif_Display({
@@ -10,7 +10,7 @@ export const fontSerif: NextFont = DM_Serif_Display({
   weight: ["400"],
 });
 
-export const fontSans: NextFont = Open_Sans({
+export const fontSans: NextFont = Roboto({
   subsets: ["latin"],
   weight: ["400"],
 });

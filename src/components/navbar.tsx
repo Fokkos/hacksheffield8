@@ -34,7 +34,7 @@ export default function Navbar(): React.ReactNode {
             </div>
             <div className={'flex flex-col text-white font-bold'}>
               <span className="text-lg">
-                Score: {score}
+                Score: {score}/5
               </span>
               <a className={'underline cursor-pointer hover:text-gray-300'} onClick={resetScore}>
                 Reset Score
