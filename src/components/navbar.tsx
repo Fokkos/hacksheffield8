@@ -28,10 +28,11 @@ export default function Navbar(): React.ReactNode {
               <h1 className={"font-bold text-white"}>VERY SECURE WEBSITE</h1>
             </div>
           </div>
-          <div className={'flex flex-row flex-grow self-stretch mb-6 md:m-0 items-center justify-between'}>
+          <div className={'flex flex-row gap-8 self-stretch py-5 mb-6 md:m-0 items-center justify-between'}>
             <div>
               <a href={'/feedback-form'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Survey Form</a>
             </div>
+            <div className={'w-[2px] bg-white self-stretch border-y-[16px] border-y-gray-800'} />
             <div className={'flex flex-col text-white font-bold'}>
               <span className="text-lg">
                 Score: {score}/5
