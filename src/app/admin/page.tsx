@@ -23,10 +23,6 @@ export default function AdminDash(): React.ReactNode {
 
       findHack('adminlogin')
 
-      setTimeout(() => {
-        setIsExploding(true);
-        playSound(randomYay());
-      }, 500)
     }
   };
 
