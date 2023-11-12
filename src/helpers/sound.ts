@@ -1,14 +1,14 @@
 'use client'
 
-export const vineBoom: () => HTMLAudioElement = () => new Audio("/audio/vineboom.mp3");
+export const vineBoom: () => HTMLAudioElement = () => new window.Audio("/audio/vineboom.mp3");
 
 const yaySounds = [
-  new Audio('/audio/tada.mp3'),
-  new Audio('/audio/yippee.mp3'),
-  new Audio('/audio/child_yay.mp3'),
-  new Audio('/audio/holy_moly.mp3'),
-  new Audio('/audio/tacobell.mp3'),
-  new Audio('/audio/doot.mp3'),
+  new window.Audio('/audio/tada.mp3'),
+  new window.Audio('/audio/yippee.mp3'),
+  new window.Audio('/audio/child_yay.mp3'),
+  new window.Audio('/audio/holy_moly.mp3'),
+  new window.Audio('/audio/tacobell.mp3'),
+  new window.Audio('/audio/doot.mp3'),
 ]
 
 export function playSound(sndfile: HTMLAudioElement) {
