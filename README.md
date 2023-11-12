@@ -1,36 +1,37 @@
+"Very Secure Website" is a Cybersecurity project made for [HackSheffield8](https://hacksheffield-8.devpost.com/) designed and programmed by [Jack Sanders](https://github.com/jacksanders02), [James March](https://github.com/fokkos) and [Shamis Giaquinto](https://github.com/drcakechan).
+
+The project is a mock/parody website where users are tasked with discovering and exploiting many commonly used exploitations, aiming to to teach first-year students about common attacks. It then provides advice and resources on how they would fix them for their own projects.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+To run this, you need to have [Node.js](https://nodejs.org/en/) installed on your system as a PATH variable.
 
-```bash
+Next, Install all npm packages and dependencies:
+
+```
+npm install
+```
+
+Once everything is installed, from the hacksheffield8 directory, run the dev server using 
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Screenshots
+Admin login page
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<img border="3" width="960" alt="Admin login page" src="https://github.com/jacksanders02/hacksheffield8/assets/54935498/b4f2216d-c32d-4404-976a-921fa349c304">
 
-## Learn More
+Success message for SQL injection
 
-To learn more about Next.js, take a look at the following resources:
+<img border="3" width="960" alt="Success message for SQL injection" src="https://github.com/jacksanders02/hacksheffield8/assets/54935498/c146cdf5-2e9c-4da6-8ab4-e5582c71e742">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Mobile layout example
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<img border="3" width="214" alt="Mobile layout example" src="https://github.com/jacksanders02/hacksheffield8/assets/54935498/9ed20418-7c57-49d2-9c0a-50674cd855de">
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
