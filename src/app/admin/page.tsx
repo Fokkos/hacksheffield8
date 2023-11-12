@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, {useEffect} from "react";
 import SignIn from "@/components/SignIn";
 import {playSound} from "@/helpers/sound";
 import {findHack} from "@/helpers/score";
@@ -9,6 +9,7 @@ import HackFoundModal from "@/components/HackFoundModal";
 export default function AdminDash(): React.ReactNode {
   const [isAdmin, setIsAdmin] = React.useState(false);
   const tableRef: React.MutableRefObject<HTMLTableElement | null> = React.useRef<HTMLTableElement>(null);
+  let vineBoom = () => {};
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,13 +29,18 @@ export default function AdminDash(): React.ReactNode {
     for (let i = 0; i < tableRef.current.lastElementChild!.childNodes.length; i++) {
       if (tableRef.current.lastElementChild!.children[i].firstElementChild!.innerHTML === user_id.toString()) {
         tableRef.current.deleteRow(i + 1);
-        playSound(vineBoom());
+        vineBoom()
         break;
       }
     }
   }
 
-  const vineBoom: () => HTMLAudioElement = () => new Audio("/audio/vineboom.mp3");
+  useEffect(() => {
+    vineBoom = () => {
+      playSound(new Audio("/audio/vineboom.mp3"));
+    };
+
+  })
 
   return (
     <main className={`w-full h-full pb-8 ${isAdmin && 'flex items-center justify-center'}`}>
