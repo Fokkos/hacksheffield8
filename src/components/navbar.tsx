@@ -108,7 +108,7 @@ export default function Navbar(): React.ReactNode {
               <div className={'w-[2px] bg-white self-stretch border-y-[16px] border-y-gray-800'} />
               <div className={'flex flex-col text-white font-bold'}>
                 <span className="text-lg">
-                  Score: {score}/5
+                  Score: {score}/4
                 </span>
                 <a className={'underline cursor-pointer hover:text-gray-300'} onClick={resetScore}>
                   Reset Score
