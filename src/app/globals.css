@@ -17,3 +17,8 @@
     padding: 12px 32px 12px 10px;
     margin-right: 12px;
 }
+
+.menu-borders {
+    box-sizing: border-box;
+    border-bottom: 2px solid white;
+}
