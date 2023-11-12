@@ -1,5 +1,5 @@
 'use client'
 
 export function playSound(sndfile: HTMLAudioElement) {
-  sndfile.play();
+  sndfile.play().catch(DOMException => {});
 }
