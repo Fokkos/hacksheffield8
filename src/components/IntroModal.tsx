@@ -49,7 +49,7 @@ export default function IntroModal() {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Welcome to our website, we have designed this to be as "secure" as we possibly can make it!
+                      Welcome to our website, we have designed this to be as &quot;secure&quot; as we possibly can make it!
                       If you choose to ignore this however and test our cybersecurity, we will keep a score for every vulnerability you find :)
                     </p>
                   </div>
