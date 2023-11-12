@@ -32,7 +32,7 @@ export default function Navbar(): React.ReactNode {
     window.addEventListener('scoreUpdate', () => {
       setScore(parseInt(getCookie('score')?.toString() as string))
     })
-  })
+  }, [])
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
     setMenuExpanded(!menuExpanded);
