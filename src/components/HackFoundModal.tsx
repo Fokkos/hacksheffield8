@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import React, {Fragment, useEffect, useState} from 'react'
 import {playSound, randomYay} from "@/helpers/sound";
 import Confetti from "react-dom-confetti";
+import {useEffectOnce} from "@/helpers/useEffectOnce";
 
 export default function HackFoundModal({
   title,
@@ -16,7 +17,7 @@ export default function HackFoundModal({
   let [isOpen, setIsOpen] = useState(true)
   const [isExploding, setIsExploding] = React.useState(false);
 
-  useEffect(() => {
+  useEffectOnce(() => {
     setTimeout(() => {
       setIsExploding(true);
       playSound(randomYay());
