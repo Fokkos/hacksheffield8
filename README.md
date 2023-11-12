@@ -1,4 +1,4 @@
-"Very Secure Website" is a Cybersecurity project made for [HackSheffield8](https://hacksheffield-8.devpost.com/) designed and programmed by [Jack Sanders](https://github.com/jacksanders02), [James March](https://github.com/fokkos) and [Shamis Giaquinto](https://https://github.com/drcakechan).
+"Very Secure Website" is a Cybersecurity project made for [HackSheffield8](https://hacksheffield-8.devpost.com/) designed and programmed by [Jack Sanders](https://github.com/jacksanders02), [James March](https://github.com/fokkos) and [Shamis Giaquinto](https://github.com/drcakechan).
 
 The project is a mock/parody website where users are tasked with discovering and exploiting many commonly used exploitations, aiming to to teach first-year students about common attacks. It then provides advice and resources on how they would fix them for their own projects.
 
