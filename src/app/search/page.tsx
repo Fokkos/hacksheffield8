@@ -1,14 +1,17 @@
 "use client"
 
 import {findHack} from "@/helpers/score";
-import React from "react";
+import React, {useEffect} from "react";
 import HackFoundModal from "@/components/HackFoundModal";
 
 export default function SearchPage(): React.ReactNode {
-  const bannedWords = ["SELECT", "UPDATE", "DELETE", "INSERT", "ALTER", "CREATE", "DROP"];
+  const query = "";
 
-  const queryParameters = new URLSearchParams(window.location.search);
-  const query = queryParameters.get("query");
+  useEffect(() => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const query = queryParameters.get("query");
+  })
+
   const [isValid, setIsValid] = React.useState(true);
 
   // Check if the query contains any banned words
