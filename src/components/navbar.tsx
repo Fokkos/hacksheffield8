@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, {useEffect} from "react";
 import Image from "next/image";
 import {getCookie, hasCookie} from "cookies-next";
 import {resetScore} from "@/helpers/score";
@@ -7,8 +7,10 @@ import {resetScore} from "@/helpers/score";
 export default function Navbar(): React.ReactNode {
   const [score, setScore] = React.useState(parseInt(getCookie('score')?.toString() || "0"));
 
-  window.addEventListener('scoreUpdate', () => {
-    setScore(parseInt(getCookie('score')?.toString() as string))
+  useEffect(() => {
+    window.addEventListener('scoreUpdate', () => {
+      setScore(parseInt(getCookie('score')?.toString() as string))
+    })
   })
 
   return (

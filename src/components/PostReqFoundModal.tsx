@@ -2,7 +2,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 
-export default function SQLInjectionHackFoundModal({children}:{children: React.ReactElement}) {
+export default function PostReqFoundModal({children}:{children: React.ReactElement}) {
 
   let [isOpen, setIsOpen] = useState(true)
 
@@ -42,12 +42,12 @@ export default function SQLInjectionHackFoundModal({children}:{children: React.R
                     as="h3"
                     className="text-lg font-medium leading-6 text-black"
                   >
-                    Weak Password Found!
+                    Broken Access Control Found!
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-gray-800">
-                      Looks like we MAY have forgotten to properly sanitise our search bar for any injections, especially as it links directly to our database!<br className={'mb-2'} />
-                      What you've just done is an example of an <strong>SQL Injection Attack</strong>. When creating a website that has user input fields linked to a database, make sure to use prepared statements and/or sanitise ALL inputs. (There <a href={'https://portswigger.net/web-security/sql-injection/cheat-sheet'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>PortSwigger Cheat Sheet</a> has many great examples!)
+                      Oops - turns out we are not authenticating users after a POST request is made!<br className={'mb-2'} />
+                      This is a great example of <strong>missing access controls</strong>. To avoid this pitfall, try to follow the principle of &lsquo;Deny by Default&rsquo; (make all user roles unable to access anything unless you explicitly allow them to). The <a href={'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>Authorisation Cheatsheet by OWASP</a> is a great source of information on preventing this vulnerability.
                     </p>
                   </div>
 
