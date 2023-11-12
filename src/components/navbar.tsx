@@ -16,10 +16,10 @@ export default function Navbar(): React.ReactNode {
   const [menuExpanded, setMenuExpanded] = React.useState<boolean>(false);
 
   const menuVariants = {
-    visible: {
+    visible: (i: number) => ({
       opacity: 1,
-      translateY: '0',
-    },
+      translateY: `0%`,
+    }),
 
     hidden: (i: number) => ({
       opacity: 0,
@@ -42,7 +42,7 @@ export default function Navbar(): React.ReactNode {
     <nav className={`bg-gray-800`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-min items-center justify-between gap-6 lg:gap-24">
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center z-50">
             <div className="flex items-center gap-4">
               <a href={'/'}>
                 <Image
@@ -56,54 +56,46 @@ export default function Navbar(): React.ReactNode {
             </div>
           </div>
           <MediaQuery maxWidth={767}>
-            <span className="text-white text-xl">
+            <span className="text-white text-xl z-50">
               Score: {score}/5
             </span>
             <MenuButton
               clickAction={handleClick}
               menuOpenState={menuExpanded}
-              className={`stroke-white cursor-pointer hover:text-gray-300 w-7 h-6 me-8`}
+              className={`stroke-white cursor-pointer hover:text-gray-300 w-7 h-6 me-8 z-50`}
             />
             <motion.div
-              className={`absolute w-full h-[150%] flex flex-col left-0 top-[100%] items-center pointer-events-none`}
+              className={`absolute w-full h-[150%] flex flex-col left-0 top-[100%] items-center pointer-events-none z-40`}
               initial={"hidden"}
               animate={menuExpanded ? "visible" : "hidden"}
-              transition={{staggerChildren: 0.15}}
+              variants={menuVariants}
             >
-              <motion.div
-                className={`flex w-screen justify-around flex-1 items-center z-50
+              <div
+                className={`flex w-screen justify-around flex-1 items-center
                         bg-gray-800 menu-borders pointer-events-auto`}
-                custom={0}
-                variants={menuVariants}
               >
                 <a href={'/feedback-form'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>POSTing Forms</a>
-              </motion.div>
-              <motion.div
-                className={`flex w-screen justify-around flex-1 items-center z-50
+              </div>
+              <div
+                className={`flex w-screen justify-around flex-1 items-center
                         bg-gray-800 menu-borders pointer-events-auto`}
-                custom={1}
-                variants={menuVariants}
               >
                 <a href={'/cryptography'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Cryptography</a>
-              </motion.div>
-              <motion.div
-                className={`flex w-screen justify-around flex-1 items-center z-50
+              </div>
+              <div
+                className={`flex w-screen justify-around flex-1 items-center
                         bg-gray-800 menu-borders pointer-events-auto`}
-                custom={2}
-                variants={menuVariants}
               >
                 <a href={'/admin'} className={'text-white text-xl underline cursor-pointer hover:text-gray-300'}>Not the Admin Dashboard</a>
-              </motion.div>
-              <motion.div
-                className={`flex w-screen justify-around flex-1 items-center z-50
+              </div>
+              <div
+                className={`flex w-screen justify-around flex-1 items-center
                         bg-gray-800 menu-borders pointer-events-auto`}
-                custom={3}
-                variants={menuVariants}
               >
                 <a className={'text-xl underline cursor-pointer text-white hover:text-gray-300'} onClick={resetScore}>
                   Reset Score
                 </a>
-              </motion.div>
+              </div>
             </motion.div>
           </MediaQuery>
           <MediaQuery minWidth={768}>
