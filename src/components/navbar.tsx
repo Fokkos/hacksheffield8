@@ -5,9 +5,10 @@ import {getCookie, hasCookie} from "cookies-next";
 import {resetScore} from "@/helpers/score";
 
 export default function Navbar(): React.ReactNode {
-  const [score, setScore] = React.useState(parseInt(getCookie('score')?.toString() || "0"));
+  const [score, setScore] = React.useState(0);
 
   useEffect(() => {
+    setScore(parseInt(getCookie('score')?.toString() || "0"))
     window.addEventListener('scoreUpdate', () => {
       setScore(parseInt(getCookie('score')?.toString() as string))
     })
@@ -19,12 +20,14 @@ export default function Navbar(): React.ReactNode {
         <div className="relative flex flex-col md:flex-row h-min items-start md:items-center justify-between gap-6 md:gap-16 lg:gap-24">
           <div className="flex items-center justify-center">
             <div className="flex items-center gap-4">
-              <Image
-                src={'/images/greens.png'}
-                alt={'CompSoc Greens Logo'}
-                width={100}
-                height={100}
-              />
+              <a href={'/'}>
+                <Image
+                  src={'/images/greens.png'}
+                  alt={'CompSoc Greens Logo'}
+                  width={100}
+                  height={100}
+                />
+              </a>
               <h1 className={"font-bold text-white"}>VERY SECURE WEBSITE</h1>
             </div>
           </div>

@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useState } from "react";
+import React from "react";
 
 export default function SearchBar(): React.ReactNode {
 
-  function search(formData) {
+  function search(formData: FormData) {
     const query = formData.get("query");
-    window.location = '/search?query=' + query;
+    window.location.href = '/search?query=' + query;
   }
 
   return (

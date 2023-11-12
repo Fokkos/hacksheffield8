@@ -1,10 +1,25 @@
 'use client'
 import { Dialog, Transition } from '@headlessui/react'
-import React, { Fragment, useState } from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
+import {playSound, randomYay} from "@/helpers/sound";
+import Confetti from "react-dom-confetti";
 
-export default function SQLInjectionHackFoundModal({children}:{children: React.ReactElement}) {
-
+export default function HackFoundModal({
+  title,
+  children
+}:{
+  title: string;
+  children: React.ReactElement
+}) {
   let [isOpen, setIsOpen] = useState(true)
+  const [isExploding, setIsExploding] = React.useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsExploding(true);
+      playSound(randomYay());
+    }, 500)
+  })
 
   function closeModal() {
     setIsOpen(false)
@@ -42,13 +57,10 @@ export default function SQLInjectionHackFoundModal({children}:{children: React.R
                     as="h3"
                     className="text-lg font-medium leading-6 text-black"
                   >
-                    Weak Password Found!
+                    {title}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-gray-800">
-                      Looks like we MAY have forgotten to properly sanitise our search bar for any injections, especially as it links directly to our database!<br className={'mb-2'} />
-                      What you've just done is an example of an <strong>SQL Injection Attack</strong>. When creating a website that has user input fields linked to a database, make sure to use prepared statements and/or sanitise ALL inputs. (There <a href={'https://portswigger.net/web-security/sql-injection/cheat-sheet'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>PortSwigger Cheat Sheet</a> has many great examples!)
-                    </p>
+                    {children}
                   </div>
 
                   <div className="mt-4">
@@ -57,7 +69,14 @@ export default function SQLInjectionHackFoundModal({children}:{children: React.R
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer"
                       onClick={closeModal}
                     >
-                      {children}
+                      <Confetti
+                        active={isExploding}
+                        config={{
+                          spread: 360,
+                          elementCount: 300,
+                          startVelocity: 30
+                        }}
+                      />
                       Got It 😎
                     </button>
                   </div>

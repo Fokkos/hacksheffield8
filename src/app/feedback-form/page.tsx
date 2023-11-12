@@ -2,15 +2,13 @@
 import React from 'react';
 import {playSound, randomYay} from "@/helpers/sound";
 import {findHack} from "@/helpers/score";
-import PostReqFoundModal from "@/components/PostReqFoundModal";
-import Confetti from "react-dom-confetti";
 import TextField from "@mui/material/TextField";
 import {Card, CardActions, CardContent} from "@mui/material";
 import Button from "@mui/material/Button";
+import HackFoundModal from "@/components/HackFoundModal";
 
 export default function FeedbackForm(): React.ReactNode {
-  const formRef: React.MutableRefObject<HTMLFormElement | null> = React.useRef<HTMLFormElement>(null)
-  const [isExploding, setIsExploding] = React.useState(false);
+  const formRef: React.MutableRefObject<HTMLFormElement | null> = React.useRef<HTMLFormElement>(null);
   const [modalShown, setModalShown] = React.useState(false);
 
   const submitForm = () => {
@@ -24,10 +22,6 @@ export default function FeedbackForm(): React.ReactNode {
       .then(data => {
         if (!data['very'].startsWith('nice')) {
           setModalShown(true);
-          setTimeout(() => {
-            setIsExploding(true);
-            playSound(randomYay());
-          }, 500)
           findHack('postrequest')
         }
       })
@@ -51,16 +45,12 @@ export default function FeedbackForm(): React.ReactNode {
         </CardContent>
       </Card>
       {modalShown && (
-        <PostReqFoundModal>
-          <Confetti
-            active={isExploding}
-            config={{
-              spread: 360,
-              elementCount: 300,
-              startVelocity: 30
-            }}
-          />
-        </PostReqFoundModal>
+        <HackFoundModal title={"Broken Access Control Found!"}>
+          <p className="text-gray-800">
+            Oops - turns out we are not authenticating users after a POST request is made!<br className={'mb-2'} />
+            This is a great example of <strong>missing access controls</strong>. One thing you can do to avoid this issue is to follow the principle of &lsquo;Deny by Default&rsquo; (make all user roles unable to access anything unless you explicitly allow them to). The <a href={'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>Authorisation Cheatsheet by OWASP</a> is a great source of information on preventing this vulnerability.
+          </p>
+        </HackFoundModal>
       )}
     </>
   )

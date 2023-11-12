@@ -1,16 +1,12 @@
 "use client"
 
 import React from "react";
-import Confetti from "react-dom-confetti";
-import useMousePosition from "@/helpers/mouseposition";
 import SignIn from "@/components/SignIn";
-import AdminHackFoundModal from "@/components/AdminHackFoundModal";
 import {playSound, randomYay, vineBoom} from "@/helpers/sound";
 import {findHack} from "@/helpers/score";
+import HackFoundModal from "@/components/HackFoundModal";
 
 export default function AdminDash(): React.ReactNode {
-
-  const [isExploding, setIsExploding] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
   const tableRef: React.MutableRefObject<HTMLTableElement | null> = React.useRef<HTMLTableElement>(null);
 
@@ -20,10 +16,6 @@ export default function AdminDash(): React.ReactNode {
 
     if (data.get('username')?.toString().toLowerCase() === 'admin' && data.get('password')?.toString().toLowerCase() === 'admin') {
       setIsAdmin(true);
-      setTimeout(() => {
-        setIsExploding(true);
-        playSound(randomYay());
-      }, 500)
       findHack('adminlogin')
 
     }
@@ -47,16 +39,12 @@ export default function AdminDash(): React.ReactNode {
       {!isAdmin && <SignIn handleForm={handleSubmit} />}
       {isAdmin && (
         <>
-          <AdminHackFoundModal>
-            <Confetti
-              active={isExploding}
-              config={{
-                spread: 360,
-                elementCount: 300,
-                startVelocity: 30
-              }}
-            />
-          </AdminHackFoundModal>
+          <HackFoundModal title={'Weak Password Found!'}>
+            <p className="text-gray-800">
+              Oops - turns out we are not authenticating users after a POST request is made!<br className={'mb-2'} />
+              This is a great example of <strong>missing access controls</strong>. One thing you can do to avoid this issue is to follow the principle of &lsquo;Deny by Default&rsquo; (make all user roles unable to access anything unless you explicitly allow them to). The <a href={'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html'} className={'underline cursor-pointer text-gray-800 hover:text-gray-500'}>Authorisation Cheatsheet by OWASP</a> is a great source of information on preventing this vulnerability.
+            </p>
+          </HackFoundModal>
           <div className={`comic-sans w-full h-full ms-6`}>
             <h1 className={`text-6xl`}>Admin Dashboard</h1>
             <table id={'users-table'} className={'border-collapse text-left admin-dash'} ref={tableRef}>

@@ -1,56 +1,25 @@
 "use client"
 
 import React from "react";
-import Confetti from "react-dom-confetti";
-import useMousePosition from "@/helpers/mouseposition";
-import SignIn from "@/components/SignIn";
-import AdminHackFoundModal from "@/components/AdminHackFoundModal";
-import {playSound, randomYay, vineBoom} from "@/helpers/sound";
-import {findHack} from "@/helpers/score";
+import HackFoundModal from "@/components/HackFoundModal";
 
-export default function AdminDash(): React.ReactNode {
-
-  const [isExploding, setIsExploding] = React.useState(false);
-  const [isAdmin, setIsAdmin] = React.useState(false);
-  const tableRef: React.MutableRefObject<HTMLTableElement | null> = React.useRef<HTMLTableElement>(null);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-
-    if (data.get('username')?.toString().toLowerCase() === 'admin' && data.get('password')?.toString().toLowerCase() === 'admin') {
-      setIsAdmin(true);
-
-      findHack('adminlogin')
-
-      setTimeout(() => {
-        setIsExploding(true);
-        playSound(randomYay());
-      }, 500)
-    }
-  };
-
-  const deleteUser = (user_id: number) => {
-    if (tableRef.current === null) {
-      return
-    }
-    for (let i = 0; i < tableRef.current.lastElementChild!.childNodes.length; i++) {
-      if (tableRef.current.lastElementChild!.children[i].firstElementChild!.innerHTML === user_id.toString()) {
-        tableRef.current.deleteRow(i + 1);
-        playSound(vineBoom());
-        break;
-      }
-    }
-  }
-
+export default function TodoList(): React.ReactNode {
   return (
     <main className={`w-full h-full pb-8 px-24`}>
-      <h1 className={'text-6xl'}>Developer Notes</h1>
+      <h1 className={'text-6xl'}>Developer To-Do List</h1>
       <ul>
-        <li>Remove account deletion button from /admin</li>
-        <li>Adjust search to use prepared statements</li>
-        <li></li>
+        <li>Make site prettier</li>
+        <li>Add more fun pages</li>
+        <li>Change admin password, and remove account deletion buttons from /admin</li>
+        <li>Adjust search to use prepared statements to fix SQL injections</li>
+        <li>Fix POST request authorisation</li>
       </ul>
+      <HackFoundModal title={"Bonus vulnerability found!"}>
+        <p className="text-gray-800">
+          This doesn&apos;t count towards your score - but it might help you find any missing vulnerabilities!<br className={'mb-2'} />
+          Looks like this developer knew all about the vulnerabilities within their website, but had other priorities when they were working on the site. Don&apos;t do this - if you find a security vulnerability in any program that you are creating, fixing that should be your top priority.
+        </p>
+      </HackFoundModal>
     </main>
   );
 }
