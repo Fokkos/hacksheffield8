@@ -5,20 +5,18 @@ import React, {useEffect} from "react";
 import HackFoundModal from "@/components/HackFoundModal";
 
 export default function SearchPage(): React.ReactNode {
-  const query = "";
-
-  useEffect(() => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const query = queryParameters.get("query");
-  })
 
   const [isValid, setIsValid] = React.useState(true);
+  const [query, setQuery] = React.useState("none")
 
   // Check if the query contains any banned words
   React.useEffect(() => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const URLquery = queryParameters.get("query");
+    setQuery(query)
     const re = new RegExp(/(;|"|";|'|';).*(((SELECT|UPDATE|DELETE|)\s+([a-zA-Z]|\*)+\s+(FROM|INTO|DATABASE|TABLE|INDEX)\s+)|(INSERT INTO|CREATE DATABASE|ALTER DATABASE|CREATE TABLE|ALTER TABLE|DROP TABLE|CREATE INDEX|DROP INDEX|AND|OR))/);
 
-    if (query && re.exec(query.toUpperCase())) {
+    if (URLquery && re.exec(URLquery.toUpperCase())) {
       findHack("SQL")
       setIsValid(false);
     }
