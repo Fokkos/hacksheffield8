@@ -57,7 +57,7 @@ export default function Navbar(): React.ReactNode {
           </div>
           <MediaQuery maxWidth={767}>
             <span className="text-white text-xl z-50">
-              Score: {score}/5
+              Score: {score}/4
             </span>
             <MenuButton
               clickAction={handleClick}
