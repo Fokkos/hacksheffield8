@@ -18,7 +18,7 @@ export default function AdminDash(): React.ReactNode {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    if (data.get('username') === 'admin' && data.get('password') === 'admin') {
+    if (data.get('username')?.toString().toLowerCase() === 'admin' && data.get('password')?.toString().toLowerCase() === 'admin') {
       setIsAdmin(true);
 
       findHack('adminlogin')
@@ -44,7 +44,7 @@ export default function AdminDash(): React.ReactNode {
   }
 
   return (
-    <main className={`w-full h-screen ${isAdmin && 'flex items-center justify-center'}`}>
+    <main className={`w-full h-full pb-8 ${isAdmin && 'flex items-center justify-center'}`}>
       {!isAdmin && <SignIn handleForm={handleSubmit} />}
       {isAdmin && (
         <>
