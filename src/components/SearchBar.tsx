@@ -37,7 +37,7 @@ export default function SearchBar(): React.ReactNode {
           id="query"
           name="query"
           className="block w-full p-4 ps-10 text-sm border rounded-b-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white "
-          placeholder="Search the database"
+          placeholder="Search the VERY SECURE database"
           required
         />
         <button
