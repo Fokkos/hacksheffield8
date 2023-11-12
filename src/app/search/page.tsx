@@ -11,7 +11,7 @@ export default function SearchPage(): React.ReactNode {
 
   const queryParameters = new URLSearchParams(window.location.search);
   const query = queryParameters.get("query");
-  const re = new RegExp(/((SELECT|UPDATE|DELETE|)\s+([a-zA-Z]|\*)+\s+(FROM|INTO|DATABASE|TABLE|INDEX)\s+)|(INSERT INTO|CREATE DATABASE|ALTER DATABASE|CREATE TABLE|ALTER TABLE|DROP TABLE|CREATE INDEX|DROP INDEX)/);
+  const re = new RegExp(/(;|"|";|'|';).*(((SELECT|UPDATE|DELETE|)\s+([a-zA-Z]|\*)+\s+(FROM|INTO|DATABASE|TABLE|INDEX)\s+)|(INSERT INTO|CREATE DATABASE|ALTER DATABASE|CREATE TABLE|ALTER TABLE|DROP TABLE|CREATE INDEX|DROP INDEX|AND|OR))/);
   const [isValid, setIsValid] = React.useState(true);
   const [isExploding, setIsExploding] = React.useState(false);
 
